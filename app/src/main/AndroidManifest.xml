@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CaddyApp">
         <activity
+            android:name=".InputActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

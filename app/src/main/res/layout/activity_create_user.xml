@@ -32,16 +32,16 @@
 
 
         <EditText
-            android:id="@+id/editText_confirm_password"
+            android:id="@+id/editText_phone_num_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/edit_text_bg"
-            android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
             android:drawablePadding="10dp"
-            android:hint="@string/confirm_password"
+            android:hint="@string/phone_number"
             android:importantForAutofill="no"
             android:minHeight="48dp"
             android:paddingStart="20dp"
@@ -49,7 +49,7 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_password2"
+            app:layout_constraintTop_toBottomOf="@+id/editText_confirm_password_signup"
             app:layout_constraintWidth_percent=".8" />
 
         <ImageView
@@ -66,7 +66,7 @@
             app:srcCompat="@drawable/logo_small_name_only_tp" />
 
         <EditText
-            android:id="@+id/editText_email_login"
+            android:id="@+id/editText_email_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -87,7 +87,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/editText_password"
+            android:id="@+id/editText_password_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -105,11 +105,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_email_login"
+            app:layout_constraintTop_toBottomOf="@id/editText_email_signup"
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/editText_password2"
+            android:id="@+id/editText_confirm_password_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -118,7 +118,7 @@
             android:background="@drawable/edit_text_bg"
             android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:drawablePadding="10dp"
-            android:hint="@string/password"
+            android:hint="@string/confirm_password"
             android:importantForAutofill="no"
             android:minHeight="48dp"
             android:paddingStart="20dp"
@@ -126,7 +126,7 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_password"
+            app:layout_constraintTop_toBottomOf="@+id/editText_password_signup"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
@@ -143,7 +143,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_confirm_password"
+            app:layout_constraintTop_toBottomOf="@+id/editText_phone_num_signup"
             app:layout_constraintWidth_percent=".8" />
 
 

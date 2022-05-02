@@ -9,11 +9,12 @@
     <ImageView
         android:layout_width="411dp"
         android:layout_height="365dp"
+        android:contentDescription="@string/top_bg"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_login_screen"
-        app:layout_constraintHeight_percent=".45"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
@@ -29,54 +30,149 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1" >
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintVertical_bias="0"
+
+        <ImageView
+            android:id="@+id/logo_tp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="89dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="89dp"
+            android:contentDescription="@string/caddyapp_login_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_small_name_only_tp" />
+
+        <EditText
+            android:id="@+id/editText_email_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/edit_text_bg"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
+            android:hint="@string/email"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_tp"
+            app:layout_constraintWidth_percent=".8" />
+
+        <EditText
+            android:id="@+id/editText_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/edit_text_bg"
+            android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+            android:drawablePadding="10dp"
+            android:hint="@string/password"
+            android:minHeight="48dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+            app:layout_constraintTop_toBottomOf="@id/editText_email_login"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent=".8"
+            android:importantForAutofill="no" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="57dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_bg_main"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
+            app:layout_constraintWidth_percent=".8" />
+
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_bg_main"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login"
+            app:layout_constraintWidth_percent=".8" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:minHeight="48dp"
+            android:text="@string/forgot_password"
+            android:textColor="@color/Charcoal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editText_password"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_password"
+            app:layout_constraintVertical_bias="0"
+            app:layout_goneMarginTop="5dp" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/google"
             android:elevation="35dp"
             android:src="@drawable/google"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager"
+            app:layout_constraintEnd_toStartOf="@+id/fab_twitter"
+            app:layout_constraintStart_toEndOf="@+id/fab_facebook"
+            app:layout_constraintTop_toBottomOf="@+id/button_sign_up"
             app:tint="@null" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="114dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/facebook"
             android:elevation="35dp"
             android:src="@drawable/facebook"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fab_google"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/button_sign_up"
             app:tint="@null" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -84,17 +180,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="113dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="110dp"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/twitter"
             android:elevation="35dp"
             android:src="@drawable/twitter"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/fab_google"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager"
-            app:layout_constraintVertical_bias="0.0"
-            app:tint="@null" />
+            app:layout_constraintTop_toBottomOf="@+id/button_sign_up"
+            app:tint="@null"
+            tools:ignore="ImageContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

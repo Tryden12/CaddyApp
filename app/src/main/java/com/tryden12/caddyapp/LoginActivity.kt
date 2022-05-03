@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /********* Bind the Buttons **************************************************************/
-        binding.buttonLogin.setOnClickListener{checkUserCredentials()}
+        binding.buttonLogin.setOnClickListener{toMainActivity()}
         binding.buttonSignUp.setOnClickListener {
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)

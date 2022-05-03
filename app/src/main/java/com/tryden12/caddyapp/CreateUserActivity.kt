@@ -27,26 +27,37 @@ class CreateUserActivity : AppCompatActivity() {
         binding = ActivityCreateUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Bind the button
         binding.buttonSignUp.setOnClickListener {
             addUser()
         }
 
+        // Transform password to dots
         binding.editTextConfirmPasswordSignup.transformationMethod = PasswordTransformationMethod()
     }
+
+
+
     /*** Method for Testing ***********************************/
     fun toMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
+
+
+    /********* Add User Method ********************************************************************/
     private fun addUser() {
+        // Bind edittext to variable
         email               = binding.editTextEmail.text.toString().trim()
         password            = binding.editTextPassword.text.toString().trim()
         val confirmPassword = binding.editTextConfirmPasswordSignup.text.toString().trim()
         phoneNumber         = binding.editTextPhoneNumSignup.text.toString().trim()
 
 
-        /********* Validations **************************************************************/
+
+
+        /********* Validations ********************************************************************/
         if (email.isEmpty() || password.isEmpty() ||
             confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
                 binding.textViewWarning.text = getString(R.string.all_required)
@@ -63,6 +74,10 @@ class CreateUserActivity : AppCompatActivity() {
         } else {
             binding.textViewWarning.isVisible = false
 
+
+
+
+            /*** Coroutine for Adding User ********************************************************/
             CoroutineScope(Dispatchers.IO).launch {
                 val userDao = AppDatabase.getDatabase(applicationContext).userDao()
 
@@ -70,7 +85,6 @@ class CreateUserActivity : AppCompatActivity() {
                 userID = userDao.addUser(user)
             }
         }
-
 
     }
 }

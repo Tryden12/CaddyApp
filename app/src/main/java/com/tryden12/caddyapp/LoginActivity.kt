@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /********* Bind the Buttons **************************************************************/
-        binding.buttonLogin.setOnClickListener{toMainActivity()}
+        binding.buttonLogin.setOnClickListener{checkUserCredentials()}
         binding.buttonSignUp.setOnClickListener {
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)
@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Transform password to dots
         binding.editTextPassword.transformationMethod = PasswordTransformationMethod()
 
 
@@ -41,6 +42,9 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
+
+    /*** Validation & Check User Credentials ******************************************************/
     private fun checkUserCredentials() {
         email = binding.editTextEmail.text.toString().trim()
         password = binding.editTextPassword.text.toString().trim()
@@ -51,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+        /*** Coroutine for Checking Credentials ***************************************************/
         CoroutineScope(Dispatchers.IO).launch {
             val db = AppDatabase.getDatabase(applicationContext)
                 .userDao()

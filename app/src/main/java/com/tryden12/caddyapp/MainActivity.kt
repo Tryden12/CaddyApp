@@ -20,4 +20,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onBackPressed() {
+
+        // Disabling back button to prevent going back to login screen
+        //super.onBackPressed()
+
+    }
 }

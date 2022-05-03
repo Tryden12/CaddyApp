@@ -58,6 +58,9 @@ class LoginActivity : AppCompatActivity() {
                     delay(1000L)
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
+            } else {
+                binding.textViewWarning.text = "Email or Password is incorrect!"
+                binding.textViewWarning.isVisible = true
             }
 
 

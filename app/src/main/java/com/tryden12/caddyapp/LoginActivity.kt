@@ -41,11 +41,10 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun checkUserCredentials() : Boolean {
+    private fun checkUserCredentials() {
         email = binding.editTextEmail.text.toString().trim()
         password = binding.editTextPassword.text.toString().trim()
 
-        val errorMsg = ""
 
         if (email.isEmpty() || password.isEmpty()) {
             binding.textViewWarning.isVisible = true
@@ -69,11 +68,7 @@ class LoginActivity : AppCompatActivity() {
                 binding.textViewWarning.isVisible = true
             }
 
-
-
         }
-
-        return true
 
     }
 

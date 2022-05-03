@@ -27,6 +27,15 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     private fun addUser() {
+        email               = binding.editTextEmail.text.toString().trim()
+        password            = binding.editTextPassword.text.toString().trim()
+        val confirmPassword = binding.editTextConfirmPasswordSignup.text.toString().trim()
+        phoneNumber         = binding.editTextPhoneNumSignup.text.toString().trim()
 
+
+        if (email.isEmpty() || password.isEmpty() ||
+            confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+
+        }
     }
 }

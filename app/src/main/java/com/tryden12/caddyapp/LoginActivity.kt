@@ -3,6 +3,7 @@ package com.tryden12.caddyapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.AppDatabase
 import com.tryden12.caddyapp.databinding.ActivityLoginBinding
@@ -30,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.editTextPassword.transformationMethod = PasswordTransformationMethod()
 
 
     }

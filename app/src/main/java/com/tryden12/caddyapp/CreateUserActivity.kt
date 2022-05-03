@@ -3,6 +3,7 @@ package com.tryden12.caddyapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.User
 import com.tryden12.caddyapp.databinding.ActivityCreateUserBinding
@@ -24,6 +25,8 @@ class CreateUserActivity : AppCompatActivity() {
         binding.buttonSignUp.setOnClickListener {
             addUser()
         }
+
+        binding.editTextConfirmPasswordSignup.transformationMethod = PasswordTransformationMethod()
     }
     /*** Method for Testing ***********************************/
     fun toMainActivity() {

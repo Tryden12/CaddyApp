@@ -3,13 +3,10 @@ package com.tryden12.caddyapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.AppDatabase
 import com.tryden12.caddyapp.databinding.ActivityLoginBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -48,15 +45,25 @@ class LoginActivity : AppCompatActivity() {
             binding.textViewWarning.isVisible = true
         }
 
-/*
+
         CoroutineScope(Dispatchers.IO).launch {
             val db = AppDatabase.getDatabase(applicationContext)
                 .userDao()
-            val emailCheck = db.getUser(email, password)
+
+            val emailCheck = db.getUserEmail(email)
+            val passwordCheck = db.getUserPassword(password)
+
+            if (emailCheck.equals(email) && passwordCheck.equals(password)) {
+                withContext(Dispatchers.Main) {
+                    delay(1000L)
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                }
+            }
+
 
 
         }
-*/
+
         return true
 
     }

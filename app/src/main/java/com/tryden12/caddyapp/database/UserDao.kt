@@ -22,5 +22,11 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAllUsers() : List<User>
 
+    @Query("SELECT * FROM user WHERE email = :email")
+    fun getUserEmail(email : String) : User
+
+    @Query("SELECT * FROM user WHERE password = :password")
+    fun getUserPassword(password : String) : User
+
 
 }

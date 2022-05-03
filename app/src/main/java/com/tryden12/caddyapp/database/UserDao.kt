@@ -25,14 +25,6 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE email = :email")
     fun getUserEmail(email : String) : User
 
-    @Query("SELECT * FROM user WHERE password = :password")
-    fun getUserPassword(password : String) : User
-
-    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
-    fun getUserCredentials(email : String, password: String) : User
-
-
-    // Testing the queries below:
     @Query("SELECT EXISTS (SELECT * FROM user WHERE email = :email)")
     fun is_taken(email: String) : Boolean
 

@@ -3,7 +3,10 @@ package com.tryden12.caddyapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.AppDatabase
 import com.tryden12.caddyapp.database.User
@@ -85,6 +88,44 @@ class CreateUserActivity : AppCompatActivity() {
                 userID = userDao.addUser(user)
             }
         }
+
+
+
+
+        /******* Testing email watcher: *********
+
+        binding.editTextEmail.addTextChangedListener(object : TextWatcher {
+
+            override fun beforeTextChanged(charSequnce: CharSequence, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(charSequnce: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                val userEmail = editable.toString()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    val userDao = AppDatabase.getDatabase(applicationContext)
+                        .userDao()
+
+                    if (!userDao.is_taken(email)) {
+                        isAllowed = false
+                        Toast.makeText(applicationContext,
+                            getString(R.string.email_taken),
+                            Toast.LENGTH_SHORT).show()
+                    } else {
+                        isAllowed = true
+                    }
+
+                }
+            }
+        }) */
+
+
+
 
     }
 }

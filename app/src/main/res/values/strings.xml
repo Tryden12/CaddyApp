@@ -26,6 +26,8 @@
     <string name="pw_do_not_match">Passwords do not match!</string>
     <string name="phone_num_length">Phone number must be 10 digits long!</string>
     <string name="email_character">Email must contain "@"</string>
+    <string name="email_taken">Sorry, this email is already registered.</string>
+
 
     <!-- Main Activity -->
     <string name="get_started">Get started</string>

@@ -32,4 +32,11 @@ interface UserDao {
     fun getUserCredentials(email : String, password: String) : User
 
 
+    // Testing the queries below:
+    @Query("SELECT EXISTS (SELECT * FROM user WHERE email = :email)")
+    fun is_taken(email: String) : Boolean
+
+    @Query("SELECT EXISTS (SELECT * FROM user WHERE email=:email AND password=:password)")
+    fun loginUser(email: String, password: String): Boolean
+
 }

@@ -54,8 +54,8 @@
 
         <ImageView
             android:id="@+id/logo_tp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="219dp"
+            android:layout_height="55dp"
             android:layout_marginStart="89dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="89dp"
@@ -64,6 +64,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo_small_name_only_tp" />
+
+        <TextView
+            android:id="@+id/textView_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/all_required"
+            android:textColor="@color/danger"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_tp" />
 
         <EditText
             android:id="@+id/editText_email"

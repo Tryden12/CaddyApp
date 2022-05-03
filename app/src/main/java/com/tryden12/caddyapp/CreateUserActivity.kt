@@ -3,6 +3,7 @@ package com.tryden12.caddyapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.User
 import com.tryden12.caddyapp.databinding.ActivityCreateUserBinding
 
@@ -35,7 +36,7 @@ class CreateUserActivity : AppCompatActivity() {
 
         if (email.isEmpty() || password.isEmpty() ||
             confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
-
+            binding.textViewWarning.isVisible = true
         }
     }
 }

@@ -22,6 +22,5 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAllUsers() : List<User>
 
-    @Query("SELECT * FROM user WHERE userID = :userID")
-    fun getUser(userID : Long) : User
+
 }

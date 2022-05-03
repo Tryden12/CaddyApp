@@ -17,4 +17,10 @@
     <color name="grey">#808080</color>
 
 
+    <color name="danger">#d9534f</color>
+    <color name="success">#5cb85c</color>
+    <color name="info">#5bc0de</color>
+    <color name="warning">#f0ad4e</color>
+
+
 </resources>

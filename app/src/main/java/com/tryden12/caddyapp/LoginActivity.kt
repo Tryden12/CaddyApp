@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
         val errorMsg = ""
 
         if (email.isEmpty() || password.isEmpty()) {
-            binding.textViewWarning.text = "Email or Password cannot be empty!"
             binding.textViewWarning.isVisible = true
         }
 
@@ -59,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
             } else {
-                binding.textViewWarning.text = "Email or Password is incorrect!"
+                binding.textViewWarning.text = getString(R.string.incorrect_field)
                 binding.textViewWarning.isVisible = true
             }
 

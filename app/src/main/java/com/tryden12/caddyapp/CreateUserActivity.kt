@@ -22,9 +22,13 @@ class CreateUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonSignUp.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            addUser()
         }
+    }
+    /*** Method for Testing ***********************************/
+    fun toMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun addUser() {
@@ -39,21 +43,20 @@ class CreateUserActivity : AppCompatActivity() {
             confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
                 binding.textViewWarning.text = getString(R.string.all_required)
                 binding.textViewWarning.isVisible = true
-        }
-
-        if (!email.contains("@")) {
+        }else if (!email.contains("@")) {
             binding.textViewWarning.text = getString(R.string.email_character)
             binding.textViewWarning.isVisible = true
-        }
-
-        if (password != confirmPassword) {
+        } else if (password != confirmPassword) {
             binding.textViewWarning.text = getString(R.string.pw_do_not_match)
             binding.textViewWarning.isVisible = true
-        }
-
-        if (phoneNumber.length != 10) {
+        } else if (phoneNumber.length != 10) {
             binding.textViewWarning.text = getString(R.string.phone_num_length)
             binding.textViewWarning.isVisible = true
+        } else {
+            binding.textViewWarning.text = "All clear!"
+            binding.textViewWarning.isVisible = true
         }
+
+
     }
 }

@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /********* Bind the Buttons **************************************************************/
-        binding.buttonLogin.setOnClickListener{checkUserCredentials()}
+        binding.buttonLogin.setOnClickListener{toMainActivity()}
         binding.buttonSignUp.setOnClickListener {
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)
@@ -32,6 +32,11 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+    }
+    /*** Method for Testing ***********************************/
+    fun toMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun checkUserCredentials() : Boolean {

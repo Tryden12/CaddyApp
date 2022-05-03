@@ -31,6 +31,9 @@
 
     <!-- Main Activity -->
     <string name="get_started">Get started</string>
+    <string name="lets">Let\'s</string>
+    <string name="get">Get</string>
+    <string name="started">Started</string>
 
     <!-- Input Activity -->
 

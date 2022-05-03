@@ -34,8 +34,25 @@ class CreateUserActivity : AppCompatActivity() {
         phoneNumber         = binding.editTextPhoneNumSignup.text.toString().trim()
 
 
+        /********* Validations **************************************************************/
         if (email.isEmpty() || password.isEmpty() ||
             confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+                binding.textViewWarning.text = getString(R.string.all_required)
+                binding.textViewWarning.isVisible = true
+        }
+
+        if (!email.contains("@")) {
+            binding.textViewWarning.text = getString(R.string.email_character)
+            binding.textViewWarning.isVisible = true
+        }
+
+        if (password != confirmPassword) {
+            binding.textViewWarning.text = getString(R.string.pw_do_not_match)
+            binding.textViewWarning.isVisible = true
+        }
+
+        if (phoneNumber.length != 10) {
+            binding.textViewWarning.text = getString(R.string.phone_num_length)
             binding.textViewWarning.isVisible = true
         }
     }

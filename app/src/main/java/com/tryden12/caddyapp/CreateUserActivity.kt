@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import androidx.core.view.isVisible
+import com.tryden12.caddyapp.database.AppDatabase
 import com.tryden12.caddyapp.database.User
 import com.tryden12.caddyapp.databinding.ActivityCreateUserBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -14,6 +18,7 @@ class CreateUserActivity : AppCompatActivity() {
     private var email : String = ""
     private var password : String = ""
     private var phoneNumber : String = ""
+    private var userID : Long = -1
 
     private val users = mutableListOf<User>()
 
@@ -56,8 +61,14 @@ class CreateUserActivity : AppCompatActivity() {
             binding.textViewWarning.text = getString(R.string.phone_num_length)
             binding.textViewWarning.isVisible = true
         } else {
-            binding.textViewWarning.text = "All clear!"
-            binding.textViewWarning.isVisible = true
+            binding.textViewWarning.isVisible = false
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val userDao = AppDatabase.getDatabase(applicationContext).userDao()
+
+                val user = User(0, email, password, phoneNumber)
+                userID = userDao.addUser(user)
+            }
         }
 
 

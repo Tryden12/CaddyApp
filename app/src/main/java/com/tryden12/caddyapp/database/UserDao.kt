@@ -5,7 +5,7 @@ import androidx.room.*
 interface UserDao {
 
     @Insert
-    fun addUser(user : User) : Long
+    fun addUser(user: User) : Long
 
     @Update
     fun updateUser(user : User)

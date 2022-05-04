@@ -231,7 +231,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="21dp"
-                android:checked="true"
                 android:text="@string/yes"
                 android:textSize="16sp" />
 
@@ -240,6 +239,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no"
+                android:checked="true"
                 android:textSize="16sp" />
         </RadioGroup>
 

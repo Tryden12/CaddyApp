@@ -31,7 +31,7 @@
 
 
         <TextView
-            android:id="@+id/textView_input_heading"
+            android:id="@+id/textView_page_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_input_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_page_heading" />
 
         <TextView
             android:id="@+id/textView_lie_type"
@@ -87,7 +87,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_lie_type">
 
             <RadioButton
-                android:id="@+id/flat_radioButton"
+                android:id="@+id/flat_lie_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -96,7 +96,7 @@
                 tools:layout_editor_absoluteY="949dp" />
 
             <RadioButton
-                android:id="@+id/uphill_radioButton"
+                android:id="@+id/uphill_lie_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/uphill"
@@ -104,7 +104,7 @@
                 tools:layout_editor_absoluteY="949dp" />
 
             <RadioButton
-                android:id="@+id/downhill_radioButton"
+                android:id="@+id/downhill_lie_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/downhill"
@@ -112,7 +112,7 @@
                 tools:layout_editor_absoluteY="949dp" />
 
             <RadioButton
-                android:id="@+id/left_radioButton"
+                android:id="@+id/left_lie_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/left"
@@ -120,7 +120,7 @@
                 tools:layout_editor_absoluteY="949dp" />
 
             <RadioButton
-                android:id="@+id/right_radioButton"
+                android:id="@+id/right_lie_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/right"
@@ -217,7 +217,7 @@
 
 
         <RadioGroup
-            android:id="@+id/crust_style_radioGroup"
+            android:id="@+id/trees_radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
@@ -227,7 +227,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_trees">>
 
             <RadioButton
-                android:id="@+id/hand_tossed_radioButton"
+                android:id="@+id/yes_tree_radioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="21dp"
@@ -235,7 +235,7 @@
                 android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/thin_crust_radioButton"
+                android:id="@+id/no_tree_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no"
@@ -244,7 +244,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_find_club"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -253,10 +253,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/crust_style_radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/trees_radioGroup" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_place_holder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="166dp"

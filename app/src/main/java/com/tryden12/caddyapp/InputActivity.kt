@@ -1,12 +1,12 @@
 package com.tryden12.caddyapp
 
-import android.os.Binder
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.RadioGroup
-import android.widget.Toast
-import com.tryden12.caddyapp.database.User
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.tryden12.caddyapp.databinding.ActivityInputBinding
+
 
 class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
@@ -21,6 +21,7 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     private var pathToHole                = ""
 
     private var clubByYardage             = ""
+    private var index                     = 0
 
     private val clubs = mutableListOf<String>()
 
@@ -82,14 +83,15 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
 
             /*********** Trees in the Way? ****************/
-            R.id.yes_tree_radioButton -> {
-                pathToHole = "Punch out with a "
+            R.id.no_tree_radioButton -> {
+                pathToHole = getString(R.string.punch_out)
             } R.id.yes_tree_radioButton -> {
-                pathToHole = "Hit you shot with a "
+                pathToHole = getString(R.string.use_this_club)
             }
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun findTheClub() {
         // Get input from user
         yardage               = binding.editTextYardageToHole.text.toString().trim().toInt()
@@ -143,13 +145,61 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 }
             }
 
-        /********** Total Calculation *****************************************/
-        clubDifferential =  lieDifferential +
-                           windDirectionDifferential + windSpeedDifferential
+        /********** Total Differential Calculation ************************************************/
+        clubDifferential =  lieDifferential + windDirectionDifferential + windSpeedDifferential
 
-        Toast.makeText(applicationContext,
-            "(Testing) total club differential = ${clubByYardage}",
-            Toast.LENGTH_SHORT)
-            .show()
+
+        /********** Change Club Choice Based on Differential **************************************/
+        var clubByYardageIndex = 0
+        if (clubs.contains(clubByYardage)) {
+            //  Get index of club from list
+            clubByYardageIndex = clubs.indexOf(clubByYardage).toString().toInt()
+
+                // If total = in bounds of list
+                if (clubByYardageIndex + clubDifferential in 0..9) {
+                    clubByYardage = clubs[clubByYardageIndex + clubDifferential]
+                }
+
+                // In case the total goes out of bounds:
+                else {
+                    clubByYardage = clubs[clubByYardageIndex]
+                }
+
+        }
+
+
+        /********** Display Results ***************************************************************/
+        if (pathToHole == getString(R.string.punch_out)) {
+            val builder = AlertDialog.Builder(this)
+            builder
+                .setView(R.layout.custom_alert_dialog)
+                .setMessage(getString(R.string.punch_out) + clubByYardage)
+                .setPositiveButton(android.R.string.ok, null)
+            builder.show()
+        } else {
+            val builder = AlertDialog.Builder(this)
+            builder
+                .setMessage(clubByYardage)
+                .setPositiveButton(android.R.string.ok, null)
+            builder.show()
+        }
+
+        /********** Toast Test *******************************************************************
+        if (pathToHole == getString(R.string.punch_out)) {
+        val builder = AlertDialog.Builder(this)
+        builder
+        .setMessage(getString(R.string.punch_out) + clubByYardage)
+        .setPositiveButton(android.R.string.ok, null)
+        builder.show()
+        } else {
+        val builder = AlertDialog.Builder(this)
+        builder
+        .setMessage(clubByYardage)
+        .setPositiveButton(android.R.string.ok, null)
+        builder.show()
+        }
+         */
     }
+
+
 }

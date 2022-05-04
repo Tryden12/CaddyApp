@@ -55,6 +55,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="punch_out">Punch out with a </string>
+    <string name="use_this_club">Use a </string>
+
     <string name="calculate_club">Find the club!</string>
 
 

@@ -87,9 +87,9 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
 
             /*********** Trees in the Way? ****************/
-            R.id.no_tree_radioButton -> {
+            R.id.yes_tree_radioButton -> {
                 pathToHole = getString(R.string.punch_out)
-            } R.id.yes_tree_radioButton -> {
+            } R.id.no_tree_radioButton -> {
                 pathToHole = getString(R.string.use_this_club)
             }
         }
@@ -174,11 +174,21 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
         /********** Display Results ***************************************************************/
         if (pathToHole == getString(R.string.punch_out)) {
-            val builder = AlertDialog.Builder(this)
-            builder
-                .setMessage(getString(R.string.punch_out) + clubByYardage)
-                .setPositiveButton(android.R.string.ok, null)
-            builder.show()
+            val inflater: LayoutInflater = this.layoutInflater
+            val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+
+            val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+            message.text = getString(R.string.punch_out) + clubByYardage
+
+            //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
+            //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
+
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder
+                .setView(dialogView)
+
+                .setNegativeButton(android.R.string.ok, null)
+            dialogBuilder.show()
         } else {
 
             val inflater: LayoutInflater = this.layoutInflater
@@ -196,7 +206,6 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
                 .setNegativeButton(android.R.string.ok, null)
             dialogBuilder.show()
-            dialogBuilder.setView(dialogView)
         }
 
         /********** Toast Test *******************************************************************

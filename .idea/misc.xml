@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable-v24/bg_splash_screen.xml" value="0.2095" />
         <entry key="app/src/main/res/drawable-v24/button_bg_main.xml" value="0.314" />
         <entry key="app/src/main/res/drawable-v24/button_bg_secondary.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable-v24/custom_dialog_bg.xml" value="0.294" />
         <entry key="app/src/main/res/drawable-v24/edit_text_bg.xml" value="0.2075" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.314" />
         <entry key="app/src/main/res/drawable-v24/input_screen_white_bg.xml" value="0.284" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/layout/activity_input.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.33125" />
       </map>
     </option>
   </component>

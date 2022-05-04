@@ -1,8 +1,12 @@
 package com.tryden12.caddyapp
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.tryden12.caddyapp.databinding.ActivityInputBinding
@@ -172,16 +176,27 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         if (pathToHole == getString(R.string.punch_out)) {
             val builder = AlertDialog.Builder(this)
             builder
-                .setView(R.layout.custom_alert_dialog)
                 .setMessage(getString(R.string.punch_out) + clubByYardage)
                 .setPositiveButton(android.R.string.ok, null)
             builder.show()
         } else {
-            val builder = AlertDialog.Builder(this)
-            builder
-                .setMessage(clubByYardage)
-                .setPositiveButton(android.R.string.ok, null)
-            builder.show()
+
+            val inflater: LayoutInflater = this.layoutInflater
+            val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+
+            val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+            message.text = clubByYardage
+
+            //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
+            //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
+
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder
+                .setView(dialogView)
+
+                .setNegativeButton(android.R.string.ok, null)
+            dialogBuilder.show()
+            dialogBuilder.setView(dialogView)
         }
 
         /********** Toast Test *******************************************************************
@@ -200,6 +215,8 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         }
          */
     }
+
+
 
 
 }

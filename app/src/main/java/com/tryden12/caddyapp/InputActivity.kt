@@ -4,18 +4,20 @@ import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioGroup
+import android.widget.Toast
 import com.tryden12.caddyapp.databinding.ActivityInputBinding
 
 class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
     private lateinit var binding: ActivityInputBinding
 
-    private var clubDifferential = 0
+    private var clubDifferential          = 0
 
-    private var yardageDifferential = 0
-    private var lieDifferential = 0
-    private var windDifferential = 0
-    private var pathToHole = ""
+    private var yardageDifferential       = 0
+    private var lieDifferential           = 0
+    private var windDirectionDifferential = 0
+    private var windSpeedDifferential     = 0
+    private var pathToHole                = ""
 
 
 
@@ -51,13 +53,13 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
             /*********** Wind Direction ****************/
             R.id.front_wind_radioButton -> {
-                windDifferential = 1
+                windDirectionDifferential = 1
             } R.id.back_wind_radioButton -> {
-                windDifferential = -1
+                windDirectionDifferential = -1
             } R.id.left_wind_radioButton -> {
-                windDifferential = 0
+                windDirectionDifferential = 0
             } R.id.right_wind_radioButton -> {
-                windDifferential = 0
+                windDirectionDifferential = 0
             }
 
             /*********** Trees in the Way? ****************/
@@ -70,6 +72,27 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     }
 
     private fun findTheClub() {
-        var yardage = binding.editTextYardageToHole.text.toString().trim().toInt()
+        yardageDifferential   = binding.editTextYardageToHole.text.toString().trim().toInt()
+        windSpeedDifferential = binding.editTextWindSpeed.text.toString().trim().toInt()
+
+        if (windSpeedDifferential in 0..10) {
+            windSpeedDifferential = 0
+        } else if (windSpeedDifferential in 11..20) {
+            windSpeedDifferential = 1
+        } else if (windSpeedDifferential in 21..30) {
+            windSpeedDifferential = 2
+        } else if (windSpeedDifferential in 31..40) {
+            windSpeedDifferential = 3
+        } else {
+            windSpeedDifferential = 4
+        }
+
+        clubDifferential =  lieDifferential +
+                           windDirectionDifferential + windSpeedDifferential
+
+        Toast.makeText(applicationContext,
+            "(Testing) total club differential = $clubDifferential",
+            Toast.LENGTH_SHORT)
+            .show()
     }
 }

@@ -58,4 +58,16 @@
     <string name="calculate_club">Find the club!</string>
 
 
+    <!--- Clubs -->
+    <string name="driver">Driver</string>
+    <string name="three_wood">3 wood</string>
+    <string name="four_iron">4 iron</string>
+    <string name="five_iron">5 iron</string>
+    <string name="six_iron">6 iron</string>
+    <string name="seven_iron">7 iron</string>
+    <string name="eight_iron">8 iron</string>
+    <string name="nine_iron">9 iron</string>
+    <string name="pitching_wedge">Pitching Wedge</string>
+    <string name="sand_wedge">Sand Wedge</string>
+
 </resources>

@@ -15,6 +15,7 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     private var yardageDifferential = 0
     private var lieDifferential = 0
     private var windDifferential = 0
+    private var pathToHole = ""
 
 
 
@@ -32,7 +33,7 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
     override fun onCheckedChanged(radioGroup: RadioGroup?, buttonId: Int) {
         when (buttonId) {
-            /*********** Lie Type ****************/
+            /*********** Lie Type *********************/
             R.id.flat_lie_radioButton -> {
                 lieDifferential = 0
             }
@@ -57,6 +58,13 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 windDifferential = 0
             } R.id.right_wind_radioButton -> {
                 windDifferential = 0
+            }
+
+            /*********** Trees in the Way? ****************/
+            R.id.yes_tree_radioButton -> {
+                pathToHole = "Punch out with a "
+            } R.id.yes_tree_radioButton -> {
+                pathToHole = "Hit you shot with a "
             }
         }
     }

@@ -22,19 +22,9 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
     private var clubByYardage             = ""
 
-    private var clubs: Array<String> =
-        arrayOf(
-            getString(R.string.driver),
-            getString(R.string.three_wood),
-            getString(R.string.four_iron),
-            getString(R.string.five_iron),
-            getString(R.string.six_iron),
-            getString(R.string.seven_iron),
-            getString(R.string.eight_iron),
-            getString(R.string.nine_iron),
-            getString(R.string.pitching_wedge),
-            getString(R.string.sand_wedge),
-        )
+    private val clubs = mutableListOf<String>()
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +36,16 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         binding.lieTypeRadioGroup.setOnCheckedChangeListener(this)
 
 
+        clubs.add(getString(R.string.driver))
+        clubs.add(getString(R.string.three_wood))
+        clubs.add(getString(R.string.four_iron))
+        clubs.add(getString(R.string.five_iron))
+        clubs.add(getString(R.string.six_iron))
+        clubs.add(getString(R.string.seven_iron))
+        clubs.add(getString(R.string.eight_iron))
+        clubs.add(getString(R.string.nine_iron))
+        clubs.add(getString(R.string.pitching_wedge))
+        clubs.add(getString(R.string.sand_wedge))
 
 
     }
@@ -99,27 +99,27 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             /********** Club by Yardage *************************************/
             when (yardage) {
                 in 0..70 -> {
-                    clubByYardage = clubs[9]
+                    clubByYardage = clubs[9] // sand wedge
                 } in 71..130 -> {
-                    clubByYardage = clubs[8]
+                    clubByYardage = clubs[8] // pitching wedge
                 } in 131..145 -> {
-                    clubByYardage = clubs[7]
+                    clubByYardage = clubs[7] // 9iron
                 } in 146..160 -> {
-                    clubByYardage = clubs[6]
+                    clubByYardage = clubs[6] // 8iron
                 } in 161..175 -> {
-                    clubByYardage = clubs[5]
+                    clubByYardage = clubs[5] // 7iron
                 } in 176..190 -> {
-                    clubByYardage = clubs[4]
+                    clubByYardage = clubs[4] // 6iron
                 } in 191..205 -> {
-                    clubByYardage = clubs[3]
+                    clubByYardage = clubs[3] // 5iron
                 } in 206..220 -> {
-                    clubByYardage = clubs[2]
+                    clubByYardage = clubs[2] // 4iron
                 } in 221..240 -> {
-                    clubByYardage = clubs[1]
+                    clubByYardage = clubs[1] // 3wood
                 } in 241..600 -> {
-                    clubByYardage = clubs[0]
+                    clubByYardage = clubs[0] // Driver
                 } else -> {
-                    clubByYardage = clubs[0]
+                    clubByYardage = clubs[0] // Driver
                 }
 
             }
@@ -148,7 +148,7 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                            windDirectionDifferential + windSpeedDifferential
 
         Toast.makeText(applicationContext,
-            "(Testing) total club differential = $clubDifferential",
+            "(Testing) total club differential = ${clubByYardage}",
             Toast.LENGTH_SHORT)
             .show()
     }

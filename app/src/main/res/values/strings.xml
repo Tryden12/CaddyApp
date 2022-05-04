@@ -36,6 +36,26 @@
     <string name="started">Started</string>
 
     <!-- Input Activity -->
+    <string name="page_heading_input">Find the Club You Need</string>
+    <string name="yardage_to_hole">Yardage to the hole</string>
+    <string name="clear_shot">Trees in the way?</string>
+
+    <string name="lie_type">Lie type</string>
+    <string name="flat">Flat</string>
+    <string name="uphill">Uphill</string>
+    <string name="downhill">Downhill</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+
+    <string name="wind_direction">Wind Direction</string>
+    <string name="front">Front</string>
+    <string name="back">Back</string>
+
+    <string name="wind_speed">Wind speed in mph</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="calculate_club">Find the club!</string>
 
 
 </resources>

@@ -11,9 +11,7 @@ import androidx.core.view.isVisible
 import com.tryden12.caddyapp.database.AppDatabase
 import com.tryden12.caddyapp.database.User
 import com.tryden12.caddyapp.databinding.ActivityCreateUserBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -86,6 +84,11 @@ class CreateUserActivity : AppCompatActivity() {
 
                 val user = User(0, email, password, phoneNumber)
                 userID = userDao.addUser(user)
+
+                withContext(Dispatchers.Main) {
+                    delay(100L)
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                }
             }
         }
 

@@ -60,6 +60,9 @@
 
     <string name="calculate_club">Find the club!</string>
 
+    <string name="yardage_cannot_be_empty">Yardage input cannot be blank!</string>
+    <string name="wind_cannot_be_empty">Wind speed input cannot be blank!</string>
+
 
     <!--- Clubs -->
     <string name="driver">Driver</string>

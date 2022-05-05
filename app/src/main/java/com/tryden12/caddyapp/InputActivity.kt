@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.tryden12.caddyapp.databinding.ActivityInputBinding
@@ -97,36 +98,50 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
     @SuppressLint("StringFormatInvalid")
     private fun findTheClub() {
+
         // Get input from user
         yardage               = binding.editTextYardageToHole.text.toString().trim().toInt()
         windSpeedDifferential = binding.editTextWindSpeed.text.toString().trim().toInt()
 
 
+        /********** Validation Check *************************************/
+
+        if (binding.editTextYardageToHole.text.toString().isEmpty()) {
+            Toast.makeText(applicationContext,
+                getString(R.string.yardage_cannot_be_empty),
+                Toast.LENGTH_LONG
+            ).show()
+        } else if (binding.editTextWindSpeed.text.toString().isEmpty()) {
+            Toast.makeText(applicationContext,
+                getString(R.string.wind_cannot_be_empty),
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
             /********** Club by Yardage *************************************/
             when (yardage) {
                 in 0..70 -> {
                     clubByYardage = clubs[9] // sand wedge
                 } in 71..130 -> {
-                    clubByYardage = clubs[8] // pitching wedge
-                } in 131..145 -> {
-                    clubByYardage = clubs[7] // 9iron
-                } in 146..160 -> {
-                    clubByYardage = clubs[6] // 8iron
-                } in 161..175 -> {
-                    clubByYardage = clubs[5] // 7iron
-                } in 176..190 -> {
-                    clubByYardage = clubs[4] // 6iron
-                } in 191..205 -> {
-                    clubByYardage = clubs[3] // 5iron
-                } in 206..220 -> {
-                    clubByYardage = clubs[2] // 4iron
-                } in 221..240 -> {
-                    clubByYardage = clubs[1] // 3wood
-                } in 241..600 -> {
-                    clubByYardage = clubs[0] // Driver
-                } else -> {
-                    clubByYardage = clubs[0] // Driver
-                }
+                clubByYardage = clubs[8] // pitching wedge
+            } in 131..145 -> {
+                clubByYardage = clubs[7] // 9iron
+            } in 146..160 -> {
+                clubByYardage = clubs[6] // 8iron
+            } in 161..175 -> {
+                clubByYardage = clubs[5] // 7iron
+            } in 176..190 -> {
+                clubByYardage = clubs[4] // 6iron
+            } in 191..205 -> {
+                clubByYardage = clubs[3] // 5iron
+            } in 206..220 -> {
+                clubByYardage = clubs[2] // 4iron
+            } in 221..240 -> {
+                clubByYardage = clubs[1] // 3wood
+            } in 241..600 -> {
+                clubByYardage = clubs[0] // Driver
+            } else -> {
+                clubByYardage = clubs[0] // Driver
+            }
 
             }
 
@@ -149,15 +164,15 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 }
             }
 
-        /********** Total Differential Calculation ************************************************/
-        clubDifferential =  lieDifferential + windDirectionDifferential + windSpeedDifferential
+            /********** Total Differential Calculation ************************************************/
+            clubDifferential =  lieDifferential + windDirectionDifferential + windSpeedDifferential
 
 
-        /********** Change Club Choice Based on Differential **************************************/
-        var clubByYardageIndex = 0
-        if (clubs.contains(clubByYardage)) {
-            //  Get index of club from list
-            clubByYardageIndex = clubs.indexOf(clubByYardage).toString().toInt()
+            /********** Change Club Choice Based on Differential **************************************/
+            var clubByYardageIndex = 0
+            if (clubs.contains(clubByYardage)) {
+                //  Get index of club from list
+                clubByYardageIndex = clubs.indexOf(clubByYardage).toString().toInt()
 
                 // If total = in bounds of list
                 if (clubByYardageIndex + clubDifferential in 0..9) {
@@ -169,60 +184,66 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                     clubByYardage = clubs[clubByYardageIndex]
                 }
 
+            }
+
+
+            /********** Display Results ***************************************************************/
+            if (pathToHole == getString(R.string.punch_out)) {
+                val inflater: LayoutInflater = this.layoutInflater
+                val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+
+                val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+                message.text = getString(R.string.punch_out) + clubByYardage
+
+                //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
+                //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
+
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder
+                    .setView(dialogView)
+
+                    .setNegativeButton(android.R.string.ok, null)
+                dialogBuilder.show()
+            } else {
+
+                val inflater: LayoutInflater = this.layoutInflater
+                val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+
+                val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+                message.text = clubByYardage
+
+                //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
+                //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
+
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder
+                    .setView(dialogView)
+
+                    .setNegativeButton(android.R.string.ok, null)
+                dialogBuilder.show()
+            }
+
+            /********** Toast Test *******************************************************************
+            if (pathToHole == getString(R.string.punch_out)) {
+            val builder = AlertDialog.Builder(this)
+            builder
+            .setMessage(getString(R.string.punch_out) + clubByYardage)
+            .setPositiveButton(android.R.string.ok, null)
+            builder.show()
+            } else {
+            val builder = AlertDialog.Builder(this)
+            builder
+            .setMessage(clubByYardage)
+            .setPositiveButton(android.R.string.ok, null)
+            builder.show()
+            }
+             */
         }
 
 
-        /********** Display Results ***************************************************************/
-        if (pathToHole == getString(R.string.punch_out)) {
-            val inflater: LayoutInflater = this.layoutInflater
-            val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
 
-            val message = dialogView.findViewById<TextView>(R.id.text_dialog)
-            message.text = getString(R.string.punch_out) + clubByYardage
 
-            //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
-            //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
 
-            val dialogBuilder = AlertDialog.Builder(this)
-            dialogBuilder
-                .setView(dialogView)
-
-                .setNegativeButton(android.R.string.ok, null)
-            dialogBuilder.show()
-        } else {
-
-            val inflater: LayoutInflater = this.layoutInflater
-            val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
-
-            val message = dialogView.findViewById<TextView>(R.id.text_dialog)
-            message.text = clubByYardage
-
-            //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
-            //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
-
-            val dialogBuilder = AlertDialog.Builder(this)
-            dialogBuilder
-                .setView(dialogView)
-
-                .setNegativeButton(android.R.string.ok, null)
-            dialogBuilder.show()
-        }
-
-        /********** Toast Test *******************************************************************
-        if (pathToHole == getString(R.string.punch_out)) {
-        val builder = AlertDialog.Builder(this)
-        builder
-        .setMessage(getString(R.string.punch_out) + clubByYardage)
-        .setPositiveButton(android.R.string.ok, null)
-        builder.show()
-        } else {
-        val builder = AlertDialog.Builder(this)
-        builder
-        .setMessage(clubByYardage)
-        .setPositiveButton(android.R.string.ok, null)
-        builder.show()
-        }
-         */
     }
 
 

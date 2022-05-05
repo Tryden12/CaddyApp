@@ -99,11 +99,6 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     @SuppressLint("StringFormatInvalid")
     private fun findTheClub() {
 
-        // Get input from user
-        yardage               = binding.editTextYardageToHole.text.toString().trim().toInt()
-        windSpeedDifferential = binding.editTextWindSpeed.text.toString().trim().toInt()
-
-
         /********** Validation Check *************************************/
 
         if (binding.editTextYardageToHole.text.toString().isEmpty()) {
@@ -117,6 +112,11 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 Toast.LENGTH_LONG
             ).show()
         } else {
+
+            // Get input from user
+            yardage               = binding.editTextYardageToHole.text.toString().trim().toInt()
+            windSpeedDifferential = binding.editTextWindSpeed.text.toString().trim().toInt()
+
             /********** Club by Yardage *************************************/
             when (yardage) {
                 in 0..70 -> {

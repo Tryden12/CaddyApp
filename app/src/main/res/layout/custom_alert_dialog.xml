@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="200dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="25dp"
     android:background="@drawable/custom_dialog_bg">
@@ -11,7 +11,7 @@
         android:layout_height="150dp"
         android:background="@color/Blue"
         android:gravity="center"
-        android:src="@drawable/launcher_icon2" />
+        android:src="@drawable/alert_dialog_top" />
 
     <TextView
         android:id="@+id/text_dialog"
@@ -20,7 +20,7 @@
         android:layout_below="@+id/a"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
@@ -35,8 +35,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/text_dialog"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:visibility="invisible"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_bg_main"
         android:gravity="center_vertical|center_horizontal"

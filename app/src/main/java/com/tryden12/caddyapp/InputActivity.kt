@@ -1,10 +1,11 @@
 package com.tryden12.caddyapp
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -26,7 +27,7 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     private var pathToHole                = ""
 
     private var clubByYardage             = ""
-    private var index                     = 0
+    private var pathToHoleCount           = 0
 
     private val clubs = mutableListOf<String>()
 
@@ -87,16 +88,19 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 windDirectionDifferential = 0
             }
 
-            /*********** Trees in the Way? ****************/
+            /*********** Trees in the Way? *********************/
             R.id.yes_tree_radioButton -> {
                 pathToHole = getString(R.string.punch_out)
+                pathToHoleCount = 2
             } R.id.no_tree_radioButton -> {
                 pathToHole = getString(R.string.use_this_club)
+                pathToHoleCount = 3
             }
+
         }
     }
 
-    @SuppressLint("StringFormatInvalid")
+    @SuppressLint("StringFormatInvalid", "ResourceType")
     private fun findTheClub() {
 
         /********** Validation Check *************************************/
@@ -164,11 +168,11 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                 }
             }
 
-            /********** Total Differential Calculation ************************************************/
+            /********** Total Differential Calculation ********************************************/
             clubDifferential =  lieDifferential + windDirectionDifferential + windSpeedDifferential
 
 
-            /********** Change Club Choice Based on Differential **************************************/
+            /********** Change Club Choice Based on Differential **********************************/
             var clubByYardageIndex = 0
             if (clubs.contains(clubByYardage)) {
                 //  Get index of club from list
@@ -187,13 +191,13 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             }
 
 
-            /********** Display Results ***************************************************************/
-            if (pathToHole == getString(R.string.punch_out)) {
+            /********** Display Results ***********************************************************/
+            if (pathToHole.equals(getString(R.string.punch_out))) {
                 val inflater: LayoutInflater = this.layoutInflater
                 val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
 
                 val message = dialogView.findViewById<TextView>(R.id.text_dialog)
-                message.text = getString(R.string.punch_out) + clubByYardage
+                message.text = getString(R.string.punch_out) + " " + clubByYardage
 
                 //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
                 //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
@@ -204,38 +208,46 @@ class InputActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
                     .setNegativeButton(android.R.string.ok, null)
                 dialogBuilder.show()
+
             } else {
 
-                val inflater: LayoutInflater = this.layoutInflater
-                val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+                val dialog = AlertDialog.Builder(this)
+                val layout = layoutInflater.inflate(R.layout.custom_alert_dialog,null)
+                dialog.setView(layout)
 
-                val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+                val  button = layout.findViewById<Button>(R.id.btn_dialog)
+
+                val message = layout.findViewById<TextView>(R.id.text_dialog)
+
+                val alert = dialog.create()
+
+                alert.show()
                 message.text = clubByYardage
+                button.setOnClickListener {
+                    alert.dismiss()
+                }
+                alert.window?.setBackgroundDrawableResource(android.R.color.transparent)
+                alert.window?.setLayout(800, 1200)
 
-                //val btn = dialogView.findViewById<TextView>(R.id.btn_dialog)
-                //btn.setOnClickListener({ dialogBuilder.setOnDismissListener(this) })
 
-                val dialogBuilder = AlertDialog.Builder(this)
-                dialogBuilder
-                    .setView(dialogView)
-
-                    .setNegativeButton(android.R.string.ok, null)
-                dialogBuilder.show()
             }
 
             /********** Toast Test *******************************************************************
             if (pathToHole == getString(R.string.punch_out)) {
-            val builder = AlertDialog.Builder(this)
-            builder
-            .setMessage(getString(R.string.punch_out) + clubByYardage)
-            .setPositiveButton(android.R.string.ok, null)
-            builder.show()
-            } else {
-            val builder = AlertDialog.Builder(this)
-            builder
-            .setMessage(clubByYardage)
-            .setPositiveButton(android.R.string.ok, null)
-            builder.show()
+            val inflater: LayoutInflater = this.layoutInflater
+            val dialogView: View = inflater.inflate(R.layout.custom_alert_dialog, null)
+
+            val message = dialogView.findViewById<TextView>(R.id.text_dialog)
+            message.text = clubByYardage
+
+            //val button = dialogView.findViewById<TextView>(R.id.btn_dialog)
+            button.setOnClickListener { builder.dismiss() }
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder
+            .setView(dialogView)
+
+            .setNegativeButton(android.R.string.ok, null)
+            dialogBuilder.show()
             }
              */
         }

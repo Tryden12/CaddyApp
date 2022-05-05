@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/activity_input.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_alert_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.33125" />
       </map>
     </option>
